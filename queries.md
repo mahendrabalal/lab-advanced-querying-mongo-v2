@@ -72,38 +72,43 @@ Limit => 1000
 
 {"founded_day": {$lte: 7}}
 sort => {"acquisition.rpice_amount": 1}
-Limit => 10
+sort => 10
 
 <br>
 
 ## Iteration 3 (Bonus)
 
 **1. All the companies that have been acquired after 2010, order by the acquisition amount, and retrieve only their `name` and `acquisition` field.**
+{"acquisition.acquired_year": {$lt: 2010}}
+{"name: 1, "acquisition": 1, "_id": 0}
+{"acquisition.price_amount": -1}
 
-<!-- Your Query Goes Here -->
 
 <br>
 
 **2. Order the companies by their `founded year`, retrieving only their `name` and `founded year`.**
+{"name": 1, "founded_year": 1, "_id": 0}
+{"founded_year": 1}
 
-<!-- Your Query Goes Here -->
 
 <br>
 
 **3. All the companies on the 'web' `category` that have more than 4000 employees. Sort them by the amount of employees in ascending order.**
+{"number_of_employees": {$gt: 4000}}
+{"number_of_employees": 1}
 
-<!-- Your Query Goes Here -->
 
 <br>
 
 **4. All the companies whose acquisition amount is more than 10.000.000, and currency is 'EUR'.**
 
-<!-- Your Query Goes Here -->
+{"acquisition.price_amount: {$gt: 10000000}, "acquisition.price_currency: "EUR}
+{"name": 1}
 
 <br>
 
 **5. All the companies that have been founded between 2000 and 2010, but have not been acquired before 2011.**
 
-<!-- Your Query Goes Here -->
+{"founded_year": {$gte: 2000, $lte:2010}, $or: [{"acquisition.acquired_year": {$gte: 2011}}, {"acquision.acquired_year": {$exists: false}}]}
 
 <br>
